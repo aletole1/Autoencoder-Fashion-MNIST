@@ -2,7 +2,7 @@ import torch
 from tqdm import tqdm
 
 class Trainer:
-    def __init__(self, model, train_dataloader, test_dataloader, loss_fn, optimizer, device, epochs=10):
+    def __init__(self, model, train_dataloader, test_dataloader, loss_fn, optimizer, device, epochs=30):
         self.model = model
         self.train_dataloader = train_dataloader
         self.test_dataloader = test_dataloader
@@ -17,10 +17,10 @@ class Trainer:
     def train_loop(self):
         self.model.train()
         running_loss = 0
-        for (X, _) in self.train_dataloader:
+        for (X, Y) in self.train_dataloader:
             X = X.to(self.device)
             output = self.model(X)
-            loss = self.loss_fn(output, X)
+            loss = self.loss_fn(output, Y)
             self.optimizer.zero_grad()
             loss.backward()
             self.optimizer.step()
@@ -34,10 +34,10 @@ class Trainer:
         num_batches = len(dataloader)
 
         with torch.no_grad():
-            for X, _ in dataloader:
+            for X, Y in dataloader:
                 X = X.to(self.device)
                 pred = self.model(X)
-                loss = self.loss_fn(pred, X)
+                loss = self.loss_fn(pred, Y)
 
                 running_loss += loss.item()
 

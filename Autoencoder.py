@@ -2,11 +2,12 @@ import torch
 from torch import nn
 
 class Autoencoder_S2F(nn.Module):
+    # Arquitectura S2F (Stride-to-Feature)
     def __init__(self, dropout=0.2):
         super(Autoencoder_S2F, self).__init__()
         self.encoder = nn.Sequential(
             # Capa convolucional 1
-            nn.Conv2d(1, 16, kernel_size=3, padding=0, stride=2),  # Conv2D de entrada, (1, 28, 28) a (16, 26, 26)
+            nn.Conv2d(1, 16, kernel_size=3, padding=0, stride=2),  # Conv2D de entrada, (1, 28, 28) a (16, 13, 13)
             nn.ReLU(),
             nn.Dropout(dropout),
             # Capa convolucional 2
@@ -41,6 +42,7 @@ class Autoencoder_S2F(nn.Module):
         return x
 
 class Autoencoder_F2S(nn.Module):
+    # Arquitectura F2S (Feature-to-Stride) 
     def __init__(self, dropout=0.2):
         super(Autoencoder_F2S, self).__init__()
         self.encoder = nn.Sequential(
