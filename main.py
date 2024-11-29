@@ -78,12 +78,21 @@ def train_all(configs, t_dataset, v_dataset):
         model, train_loss_incorrect, train_loss, valid_loss = train_configuration(config, t_dataset, v_dataset)
         results = {
             "config_"+str(i): config,
-            "model_"+str(i): model,
+            # "model_"+str(i): model,
             "train_loss_incorrect_"+str(i): train_loss_incorrect,
             "train_loss_"+str(i): train_loss,
             "valid_loss_"+str(i): valid_loss
         }
-        with open(f'./results/result_{i}.json', 'w') as f:
+        file_name = ""
+        if config["S2F"]:
+            file_name = f'./results/S2F_{config["learning_rate"]}.json'
+        else:
+            file_name = f'./results/F2S_{config["learning_rate"]}.json'
+
+        if not os.path.exists('./results'):
+            os.makedirs('./results')
+
+        with open(file_name, 'w') as f:
             json.dump(results, f)
             
 
@@ -92,14 +101,28 @@ configurations = [
         "learning_rate": 0.001,
         "dropout": 0.2,
         "batch_size": 100,
-        "epochs": 50,
+        "epochs": 60,
+        "S2F": True
+    },
+    { # configuracion default
+        "learning_rate": 0.01,
+        "dropout": 0.2,
+        "batch_size": 100,
+        "epochs": 60,
         "S2F": True
     },
     {
         "learning_rate": 0.001,
         "dropout": 0.2,
         "batch_size": 100,
-        "epochs": 50,
+        "epochs": 60,
+        "S2F": False
+    },
+    {
+        "learning_rate": 0.01,
+        "dropout": 0.2,
+        "batch_size": 100,
+        "epochs": 60,
         "S2F": False
     },
 ]
