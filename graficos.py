@@ -8,9 +8,9 @@ files.sort()
 
 def save_plot(conf,train_loss_in,train_loss,valid_loss, name):
     plt.figure()
-    plt.plot(train_loss_in, label='train_loss_incorrect')
-    plt.plot(train_loss, label='train_loss', linestyle='--')
-    plt.plot(valid_loss, label='valid_loss', linestyle='-.')
+    plt.plot(range(len(train_loss_in)),train_loss_in, label='train_loss_incorrect', c='r')
+    plt.plot(range(len(train_loss)),train_loss, label='train_loss', linestyle='--', c='b')
+    plt.plot(range(len(valid_loss)),valid_loss, label='valid_loss', linestyle='-.', c='g')
     plt.grid()
     plt.title(name)
     plt.legend()

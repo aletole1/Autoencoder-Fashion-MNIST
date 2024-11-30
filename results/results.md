@@ -10,13 +10,13 @@
 }
 ```
 
-![](./configuracion0.png)
+![](./F2S_0.001.png)
 
-Pérdida de entrenamiento incorrecto: 0.6816189919908842
+Pérdida de entrenamiento incorrecto: 0.008336843142751604
 
-Pérdida de entrenamiento: 0.6816189910968145
+Pérdida de entrenamiento: 0.00542466553238531
 
-Pérdida de validación: 0.6786004632711411
+Pérdida de validación: 0.0058524398179724815
 
 # Configuración 1
 
@@ -30,13 +30,13 @@ Pérdida de validación: 0.6786004632711411
 }
 ```
 
-![](./configuracion1.png)
+![](./F2S_0.01.png)
 
-Pérdida de entrenamiento incorrecto: 0.6816189912954966
+Pérdida de entrenamiento incorrecto: 0.013036622072880467
 
-Pérdida de entrenamiento: 0.6816189928849539
+Pérdida de entrenamiento: 0.009111385280266403
 
-Pérdida de validación: 0.6786004579067231
+Pérdida de validación: 0.00955254609696567
 
 # Configuración 2
 
@@ -50,13 +50,13 @@ Pérdida de validación: 0.6786004579067231
 }
 ```
 
-![](./configuracion2.png)
+![](./S2F_0.001.png)
 
-Pérdida de entrenamiento incorrecto: 0.6816190080841382
+Pérdida de entrenamiento incorrecto: 0.009528970294632018
 
-Pérdida de entrenamiento: 0.6816189907987913
+Pérdida de entrenamiento: 0.006002399455755949
 
-Pérdida de validación: 0.6786004602909088
+Pérdida de validación: 0.006420961203984916
 
 # Configuración 3
 
@@ -70,11 +70,11 @@ Pérdida de validación: 0.6786004602909088
 }
 ```
 
-![](./configuracion3.png)
+![](./S2F_0.01.png)
 
-Pérdida de entrenamiento incorrecto: 0.6816190532843271
+Pérdida de entrenamiento incorrecto: 0.01559569428053995
 
-Pérdida de entrenamiento: 0.6816189922889073
+Pérdida de entrenamiento: 0.011431274247976641
 
-Pérdida de validación: 0.6786004579067231
+Pérdida de validación: 0.011714352313429117
 
