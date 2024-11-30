@@ -19,6 +19,7 @@ class Trainer:
         running_loss = 0
         for (X, Y) in self.train_dataloader:
             X = X.to(self.device)
+            Y = Y.to(self.device)
             output = self.model(X)
             loss = self.loss_fn(output, Y)
             self.optimizer.zero_grad()
@@ -36,6 +37,7 @@ class Trainer:
         with torch.no_grad():
             for X, Y in dataloader:
                 X = X.to(self.device)
+                Y = Y.to(self.device)
                 pred = self.model(X)
                 loss = self.loss_fn(pred, Y)
 

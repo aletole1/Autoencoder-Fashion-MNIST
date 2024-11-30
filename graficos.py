@@ -22,10 +22,10 @@ def read_results():
         for i, (data) in enumerate(files):
             with open(f'./results/{data}', 'r') as f:
                 data = json.load(f)
-                config = data[f'config_{i+1}']
-                train_loss_inc = data[f'train_loss_incorrect_{i+1}']
-                train_loss = data[f'train_loss_{i+1}']    
-                valid_loss = data[f'valid_loss_{i+1}']
+                config = data[f'config']
+                train_loss_inc = data[f'train_loss_incorrect']
+                train_loss = data[f'train_loss']    
+                valid_loss = data[f'valid_loss']
 
             save_plot(config,train_loss_inc,train_loss,valid_loss, files[i].split('.')[0])
             print(i)
