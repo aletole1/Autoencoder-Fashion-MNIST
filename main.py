@@ -68,8 +68,8 @@ def train_all(configs, t_dataset, v_dataset):
 
     Retorna una lista de tuplas con la forma:
     [
-        (modelo_1, train_loss_incorrect_1, train_loss_1, valid_loss_1),
-        (modelo_2, train_loss_incorrect_2, train_loss_2, valid_loss_2),
+        (config, train_loss_incorrect, train_loss, valid_loss),
+        (config, train_loss_incorrect, train_loss, valid_loss),
         ...
     ]
     """
@@ -77,23 +77,25 @@ def train_all(configs, t_dataset, v_dataset):
     for i,(config) in enumerate(configs):
         model, train_loss_incorrect, train_loss, valid_loss = train_configuration(config, t_dataset, v_dataset)
         results = {
-            "config_"+str(i): config,
-            # "model_"+str(i): model,
-            "train_loss_incorrect_"+str(i): train_loss_incorrect,
-            "train_loss_"+str(i): train_loss,
-            "valid_loss_"+str(i): valid_loss
+            "config": config,
+            # "model": model,
+            "train_loss_incorrect": train_loss_incorrect,
+            "train_loss": train_loss,
+            "valid_loss": valid_loss
         }
         file_name = ""
         if config["S2F"]:
-            file_name = f'./results/S2F_{config["learning_rate"]}.json'
+            file_name = f'./results/S2F_{config["learning_rate"]}'
         else:
-            file_name = f'./results/F2S_{config["learning_rate"]}.json'
+            file_name = f'./results/F2S_{config["learning_rate"]}'
+        
+        torch.save(model.state_dict(), f'{file_name}.pt')
         if not os.path.exists('./results'):
             os.makedirs('./results')
-        with open(file_name, 'w') as f:
+
+        with open(f'{file_name}.json', 'w') as f:
             json.dump(results, f)
 
-        torch.save(model.state_dict(), f'./results/{file_name}.pt')
             
 
 configurations = [
