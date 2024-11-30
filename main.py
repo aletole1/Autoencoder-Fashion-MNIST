@@ -5,6 +5,8 @@ import torch
 from torchvision import datasets, transforms
 from CustomDataset import CustomDataset
 from Trainer import Trainer
+from Visualizer import AutoencoderVisualizer
+from Autoencoder import Autoencoder_S2F, Autoencoder_F2S 
 
 def train_configuration(config, t_dataset, v_dataset):
     """ 
@@ -96,7 +98,6 @@ def train_all(configs, t_dataset, v_dataset):
         with open(f'{file_name}.json', 'w') as f:
             json.dump(results, f)
 
-            
 
 configurations = [
     { # configuracion default
@@ -139,4 +140,19 @@ valid_set_orig = datasets.FashionMNIST('MNIST_data/', download = True, train = F
 train_set_autoencoder = CustomDataset(train_set_orig)
 valid_set_autoencoder = CustomDataset(valid_set_orig)
 
-train_all(configurations, train_set_autoencoder, valid_set_autoencoder)
+# train_all(configurations, train_set_autoencoder, valid_set_autoencoder)
+
+
+visualizer = AutoencoderVisualizer(
+    model_classes=[Autoencoder_S2F, Autoencoder_S2F, Autoencoder_F2S, Autoencoder_F2S],
+    model_paths=[
+        './results/S2F_0.001.pt',
+        './results/S2F_0.01.pt',
+        './results/F2S_0.001.pt',
+        './results/F2S_0.01.pt',
+    ],
+    dataset=train_set_autoencoder
+)
+
+# Generate a single visualization with input and outputs from all models
+visualizer.visualize_comparisons(rows=4, output_path="multi_reconstruction.png")
