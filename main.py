@@ -88,12 +88,12 @@ def train_all(configs, t_dataset, v_dataset):
             file_name = f'./results/S2F_{config["learning_rate"]}.json'
         else:
             file_name = f'./results/F2S_{config["learning_rate"]}.json'
-
         if not os.path.exists('./results'):
             os.makedirs('./results')
-
         with open(file_name, 'w') as f:
             json.dump(results, f)
+
+        torch.save(model.state_dict(), f'./results/{file_name}.pt')
             
 
 configurations = [
@@ -128,11 +128,11 @@ configurations = [
 ]
 
 # Define a transform to normalize the data
-transform = transforms.Compose([transforms.ToTensor(),transforms.Normalize((0.5,), (0.5,))])
+transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.0,), (1.0,))])
 
 # Se cargan los datasets
-train_set_orig = datasets.FashionMNIST('MNIST_data/', download = True, train = True,  transform = transform)
-valid_set_orig = datasets.FashionMNIST('MNIST_data/', download = True, train = False, transform = transform)
+train_set_orig = datasets.FashionMNIST('MNIST_data/', download = True, train = True,  transform = transforms.ToTensor())
+valid_set_orig = datasets.FashionMNIST('MNIST_data/', download = True, train = False, transform = transforms.ToTensor())
 
 train_set_autoencoder = CustomDataset(train_set_orig)
 valid_set_autoencoder = CustomDataset(valid_set_orig)

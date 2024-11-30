@@ -26,15 +26,16 @@ def read_results():
                 train_loss_inc = data[f'train_loss_incorrect']
                 train_loss = data[f'train_loss']    
                 valid_loss = data[f'valid_loss']
-
-            save_plot(config,train_loss_inc,train_loss,valid_loss, files[i].split('.')[0])
+            file_name = files[i].split('.json')[0]
+            save_plot(config,train_loss_inc,train_loss,valid_loss, file_name)
+            print(files[i].split('.json')[0])
             print(i)
             # wirte the configuration and the plot in a markdown file
             md_file.write(f'# Configuración {i}\n\n')
             md_file.write(f'```json\n')
             md_file.write(json.dumps(config, indent=4))
             md_file.write(f'\n```\n\n')
-            md_file.write(f'![](./configuracion{i}.png)\n\n')
+            md_file.write(f'![](./{file_name}.png)\n\n')
             # wirte last values of the losses
             md_file.write(f'Pérdida de entrenamiento incorrecto: {train_loss_inc[-1]}\n\n')
             md_file.write(f'Pérdida de entrenamiento: {train_loss[-1]}\n\n')
