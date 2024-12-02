@@ -8,13 +8,13 @@ import autoencoder
 
 class ClassifierTrainer:
     def __init__(self, model, train_loader, valid_loader, optimizer, criterion, epochs):
-        self.model = model
         self.train_loader = train_loader
         self.valid_loader = valid_loader
         self.optimizer = optimizer
         self.criterion = criterion
         self.epochs = epochs
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.model = model.to(self.device)
 
         self.train_loss_incorrect = []
         self.train_loss = []
