@@ -1,84 +1,88 @@
-# Configuración 0
-
-```json
-{
-    "learning_rate": 0.001,
-    "dropout": 0.2,
-    "batch_size": 100,
-    "epochs": 60,
-    "S2F": false,
-    "train_all": false
-}
-```
-
-![](./F2S_0.001.png)
-
-Pérdida de entrenamiento incorrecto: 0.008640918103046714
-
-Pérdida de entrenamiento: 0.005914613652663926
-
-Pérdida de validación: 0.0067393512092530725
-
 # Configuración 1
 
 ```json
 {
-    "learning_rate": 0.01,
+    "id": 1,
+    "learning_rate": 0.001,
     "dropout": 0.2,
+    "l_size": 64,
     "batch_size": 100,
     "epochs": 60,
-    "S2F": false,
-    "train_all": true
+    "lineal": true
 }
 ```
 
-![](./F2S_0.01.png)
+![](./configuracion1.png)
 
-Pérdida de entrenamiento incorrecto: 0.011790009012135366
+Pérdida de entrenamiento incorrecto: 0.017255655922926962
 
-Pérdida de entrenamiento: 0.007799781073505679
+Pérdida de entrenamiento: 0.022101014222328862
 
-Pérdida de validación: 0.00838674587663263
+Pérdida de validación: 0.02221326269209385
 
 # Configuración 2
 
 ```json
 {
+    "id": 2,
     "learning_rate": 0.001,
     "dropout": 0.2,
+    "l_size": 512,
     "batch_size": 100,
     "epochs": 60,
-    "S2F": true,
-    "train_all": false
+    "lineal": true
 }
 ```
 
-![](./S2F_0.001.png)
+![](./configuracion2.png)
 
-Pérdida de entrenamiento incorrecto: 0.008158766061533242
+Pérdida de entrenamiento incorrecto: 0.010286848434867959
 
-Pérdida de entrenamiento: 0.005304083267692477
+Pérdida de entrenamiento: 0.008588632261380553
 
-Pérdida de validación: 0.006242909710854292
+Pérdida de validación: 0.00894775432534516
 
 # Configuración 3
 
 ```json
 {
-    "learning_rate": 0.01,
+    "id": 3,
+    "learning_rate": 0.001,
     "dropout": 0.2,
+    "l_size": 1024,
     "batch_size": 100,
     "epochs": 60,
-    "S2F": true,
-    "train_all": true
+    "lineal": true
 }
 ```
 
-![](./S2F_0.01.png)
+![](./configuracion3.png)
 
-Pérdida de entrenamiento incorrecto: 0.014699301035143435
+Pérdida de entrenamiento incorrecto: 0.008950487502540152
 
-Pérdida de entrenamiento: 0.010162276026482384
+Pérdida de entrenamiento: 0.007686808056508502
 
-Pérdida de validación: 0.010614893231540919
+Pérdida de validación: 0.008079061871394516
+
+# Configuración 4
+
+```json
+{
+    "id": 4,
+    "learning_rate": 0.001,
+    "dropout": 0.2,
+    "l_size": 128,
+    "batch_size": 100,
+    "epochs": 60,
+    "lineal": false
+}
+```
+
+![](./configuracion4.png)
+
+Pérdida de entrenamiento incorrecto: 0.005129455793648958
+
+Pérdida de entrenamiento: 0.005741913962798814
+
+Pérdida de validación: 0.005772777325473726
 
