@@ -67,23 +67,23 @@ for model_class, model_path in zip(model_classes, model_paths):
             model.eval()
             models.append(model)
 
-for i, (model) in enumerate(models):
-    classifier_model = Classifier(model)
-    classifier_trainer = ConvClassifierTrainer(
-            model               = classifier_model,
-            config              = configurations[i],
-            t_dataset           = train_set_classifier,
-            v_dataset           = valid_set_classifier,
-            device              = device
-            )
-    train_loss_incorrect, train_loss, valid_loss, train_accuracy_incorrect, train_accuracy, valid_accuracy = classifier_trainer.train()
-    classifier_trainer.save_results(
-           train_loss_incorrect, 
-           train_loss, valid_loss, 
-           train_accuracy_incorrect, 
-           train_accuracy, 
-           valid_accuracy
-           )
+# for i, (model) in enumerate(models):
+#     classifier_model = Classifier(model)
+#     classifier_trainer = ConvClassifierTrainer(
+#             model               = classifier_model,
+#             config              = configurations[i],
+#             t_dataset           = train_set_classifier,
+#             v_dataset           = valid_set_classifier,
+#             device              = device
+#             )
+#     train_loss_incorrect, train_loss, valid_loss, train_accuracy_incorrect, train_accuracy, valid_accuracy = classifier_trainer.train()
+#     classifier_trainer.save_results(
+#            train_loss_incorrect, 
+#            train_loss, valid_loss, 
+#            train_accuracy_incorrect, 
+#            train_accuracy, 
+#            valid_accuracy
+#            )
 
 
 
@@ -101,3 +101,4 @@ for i, (model) in enumerate(models):
 
 # # Generate a single visualization with input and outputs from all models
 # visualizer.visualize_comparisons(rows=4, output_path="multi_reconstruction.png")
+
